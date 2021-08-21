@@ -1,7 +1,5 @@
-
 const ComparationList = () => {
-
-    return <div />
+  return <div />
 }
 
 export default ComparationList
