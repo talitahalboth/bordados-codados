@@ -1,6 +1,6 @@
 
 interface Props {
-    file: string
+    file?: string
     label: string
     colourName: string
     backgroundColour: string
@@ -9,29 +9,33 @@ interface Props {
 
 // const DEFAULT_IMG = '../__fixtures__/coresDmc/1.jpg'
 
-const fs = require('fs');
+// const fs = require('fs');
 
 
-const fileExists = (file: string) => {
-    try {
-        fs.accessSync(file, fs.constants.R_OK | fs.constants.W_OK);
-        return true;
-    } catch (err) {
-        return false;
-    }
-}
+// const fileExists = (file: string) => {
+//     try {
+//         require(file);
+//         return true;
+//     } catch (err) {
+//         console.log(err)
+//         return false;
+//     }
+// }
 
-const ColourWithImage = ({ count, file, label, colourName, backgroundColour }: Props) => {
-    const logo = require('../__fixtures__/coresDmc/1.jpg')
-    if (count < 10 && fileExists(file)) console.log(file)
-    if (count < 10) console.log(file)
+
+const ColourWithImage = ({ file, label, colourName, backgroundColour }: Props) => {
+    // const logo = require('../__fixtures__/coresDmc/1.jpg')
+    // console.log(anchorImages.anchor1001)
+    // if (count < 10 && fileExists(file)) console.log(file)
+    // if (count < 10) console.log(file)
     // if (fileExists(DEFAULT_IMG)) console.log(DEFAULT_IMG)
+
     return (
-        <div>
-            <img alt="threadPicture" src={String(logo.default)} />
-            <div style={{ backgroundColor: backgroundColour }}>
+        <div style={{ display: 'flex', flexDirection: 'row', alignContent: "space-between", width: '100%', alignItems: "center" }}>
+            <div style={{ backgroundColor: backgroundColour, width: "100%" }}>
                 {`${label} ${colourName}`}
             </div>
+            {file && <img style={{ maxHeight: "50px", maxWidth: "50px" }} alt="threadPicture" src={file} />}
         </div>
     )
 
