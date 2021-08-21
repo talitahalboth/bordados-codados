@@ -1,59 +1,61 @@
 // import { anchorImages } from "../__fixtures__/coresAnchor";
 
-
 export function getAverageRGB(file: string) {
-    // const imgEl: any = document.getElementById('i')
-    // const mapAnchor = anchorImages()
-    // const imgEl = React.createElement("img", {
-    //     src: mapAnchor.get("1"),
-    //     // ref: image => {
-    //     //   this.handleSize(image);
-    //     // },
-    //     // onLoad=(image)=>this.handleSize(image);
-    // });
-    if (!file) return { r: 0, g: 0, b: 0 }
-    var blockSize = 5, // only visit every 5 pixels
-        defaultRGB = { r: 0, g: 0, b: 0 }, // for non-supporting envs
-        canvas = document.createElement('canvas'),
-        context = canvas.getContext && canvas.getContext('2d'),
-        data, width, height,
-        i = -4,
-        length,
-        rgb = { r: 0, g: 0, b: 0 },
-        count = 0;
+  // const imgEl: any = document.getElementById('i')
+  // const mapAnchor = anchorImages()
+  // const imgEl = React.createElement("img", {
+  //     src: mapAnchor.get("1"),
+  //     // ref: image => {
+  //     //   this.handleSize(image);
+  //     // },
+  //     // onLoad=(image)=>this.handleSize(image);
+  // });
+  if (!file) return { r: 0, g: 0, b: 0 }
+  const blockSize = 5 // only visit every 5 pixels
+  const defaultRGB = { r: 0, g: 0, b: 0 } // for non-supporting envs
+  const canvas = document.createElement('canvas')
+  const context = canvas.getContext?.('2d')
+  let data
+  let width
+  let height
+  let i = -4
+  // let length
+  const rgb = { r: 0, g: 0, b: 0 }
+  let count = 0
 
-    const imgEl = document.createElement('img')
-    imgEl.src = (file)
-    if (!context) {
-        return defaultRGB;
-    }
+  const imgEl = document.createElement('img')
 
-    height = canvas.height = imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height;
-    width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width;
+  imgEl.src = file
+  if (!context) {
+    return defaultRGB
+  }
 
-    context.drawImage(imgEl, 0, 0);
+  height = canvas.height =
+    imgEl.naturalHeight || imgEl.offsetHeight || imgEl.height
+  width = canvas.width = imgEl.naturalWidth || imgEl.offsetWidth || imgEl.width
 
-    try {
-        data = context.getImageData(0, 0, width, height);
-    } catch (e) {
-        // /* security error, img on diff domain */alert('x');
-        return defaultRGB;
-    }
+  context.drawImage(imgEl, 0, 0)
 
-    length = data.data.length;
+  try {
+    data = context.getImageData(0, 0, width, height)
+  } catch (e) {
+    // /* security error, img on diff domain */alert('x');
+    return defaultRGB
+  }
 
-    while ((i += blockSize * 4) < length) {
-        ++count;
-        rgb.r += data.data[i];
-        rgb.g += data.data[i + 1];
-        rgb.b += data.data[i + 2];
-    }
+  const lengthData = data.data.Data
 
-    // ~~ used to floor values
-    rgb.r = ~~(rgb.r / count);
-    rgb.g = ~~(rgb.g / count);
-    rgb.b = ~~(rgb.b / count);
+  while ((i += blockSize * 4) < lengthData) {
+    ++count
+    rgb.r += data.data[i]
+    rgb.g += data.data[i + 1]
+    rgb.b += data.data[i + 2]
+  }
 
-    return rgb;
+  // ~~ used to floor values
+  rgb.r = ~~(rgb.r / count)
+  rgb.g = ~~(rgb.g / count)
+  rgb.b = ~~(rgb.b / count)
 
+  return rgb
 }

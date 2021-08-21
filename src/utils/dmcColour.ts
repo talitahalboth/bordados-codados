@@ -1,11 +1,11 @@
-import { dmcColours } from "../__fixtures__/dmcColours"
+import { dmcColours } from '../__fixtures__/dmcColours'
 
 export const getDmcColourList = () => {
+  const DmcColoursMap = new Map<string, string>()
 
-    const DmcColoursMap = new Map<string, string>()
+  dmcColours.forEach((dmcObj) => {
+    DmcColoursMap.set(dmcObj.dmc, dmcObj.hex)
+  })
 
-    dmcColours.forEach(dmcObj => {
-        DmcColoursMap.set(dmcObj.dmc, dmcObj.hex)
-    })
-    return DmcColoursMap
+  return DmcColoursMap
 }
