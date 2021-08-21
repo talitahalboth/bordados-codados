@@ -29,7 +29,6 @@ const ColourWithImage = ({
         display: 'flex',
         flexDirection: 'row',
         alignContent: 'space-between',
-        width: '100%',
         alignItems: 'center',
       }}
     >
@@ -44,7 +43,7 @@ const ColourWithImage = ({
       >
         <span>{`${label} ${colourName}`}</span>
         <Circle
-          bgColor={newBack ?? backgroundColour ?? 'white'}
+          bgColor={newBack ?? backgroundColour ?? 'none'}
           csx={{
             height: '10px',
             width: '10px',
