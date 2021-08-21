@@ -13,7 +13,6 @@ import {
 import { useState } from 'react';
 import EnhancedTableHead from './EnhancedTableHead';
 import {
-  descendingComparator,
   getComparator, stableSort
 } from './helperFunctions';
 
@@ -64,7 +63,7 @@ const SideBySideList = ({
 
   const classes = useStyles()
   const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(50)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
   const [orderBy, setOrderBy] = useState<keyof ComparisonElements>('elementA')
   const [order, setOrder] = useState<Order>('desc')
 
@@ -79,7 +78,6 @@ const SideBySideList = ({
     setPage(0);
   };
 
-  console.log(sortedElementList.sort((a, b) => descendingComparator(a, b, "elementB")))
   const handleRequestSort = (_event: React.MouseEvent<unknown>, property: keyof ComparisonElements) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
@@ -131,8 +129,8 @@ const SideBySideList = ({
         </Table>
       </TableContainer>
       <TablePagination
-        style={{ width: DEFAULT_MAX_WIDTH }}
-        rowsPerPageOptions={[50, 100, 500]}
+        style={{ maxWidth: DEFAULT_MAX_WIDTH }}
+        rowsPerPageOptions={[10, 50, 100, 500]}
         component="div"
         count={sortedElementList.length}
         rowsPerPage={rowsPerPage}

@@ -7,6 +7,7 @@ import ComparisonBoxes from './ComparisonBoxes'
 const Main = () => {
   return (
     <div>
+      <div style={{ height: "60px" }}></div>
       <ComparisonBoxes />
     </div>
   )

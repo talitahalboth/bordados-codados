@@ -5,32 +5,42 @@ import Grid from '@material-ui/core/Grid'
 import AnchorToCirculo from './AnchorToCirculo'
 import CirculoToDmc from './CirculoToDmc'
 import AnchorToDmc from './AnchorToDmc'
+import { Theme } from '@material-ui/core'
 
-const useStyles = makeStyles(() =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
-    }
-  })
-)
+    },
+    paper: {
+      height: 140,
+      width: 100,
+    },
+    control: {
+      padding: theme.spacing(2),
+    },
+  }),
+);
+
+const GRID_XS = 12
 
 const ComparisonBoxes = () => {
   const classes = useStyles()
 
   return (
-    <div style={{ padding: "10px" }} >
-      <Grid container className={classes.root} spacing={3}>
-        <Grid item xs>
+    <Grid item xs={GRID_XS}>
+      <Grid container justifyContent="center" className={classes.root} spacing={3}>
+        <Grid item>
           <AnchorToDmc />
         </Grid>
-        <Grid item xs>
+        <Grid item>
           <AnchorToCirculo />
         </Grid>
-        <Grid item xs>
+        <Grid item>
           <CirculoToDmc />
         </Grid>
       </Grid>
-    </div>
+    </Grid>
   )
 }
 

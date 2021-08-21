@@ -16,7 +16,6 @@ export function getComparator<Key extends keyof ComparisonElements>(
     order: Order,
     orderBy: Key,
 ): (a: ComparisonElements, b: ComparisonElements) => number {
-    console.log(orderBy)
     return order === 'desc'
         ? (a, b) => descendingComparator(a, b, orderBy)
         : (a, b) => -descendingComparator(a, b, orderBy);
