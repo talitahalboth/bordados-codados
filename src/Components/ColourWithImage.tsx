@@ -31,9 +31,22 @@ const ColourWithImage = ({ file, label, colourName, backgroundColour }: Props) =
     // if (fileExists(DEFAULT_IMG)) console.log(DEFAULT_IMG)
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', alignContent: "space-between", width: '100%', alignItems: "center" }}>
-            <div style={{ backgroundColor: backgroundColour, width: "100%" }}>
-                {`${label} ${colourName}`}
+        <div style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignContent: "space-between",
+            width: '100%',
+            alignItems: "center",
+        }}>
+            <div style={{
+                display: 'flex',
+                backgroundColor: backgroundColour,
+                width: "100%",
+                height: "50px",
+                justifyContent: 'center',
+                alignItems: "center"
+            }}>
+                <span>{`${label} ${colourName}`}</span>
             </div>
             {file && <img style={{ maxHeight: "50px", maxWidth: "50px" }} alt="threadPicture" src={file} />}
         </div>

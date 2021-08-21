@@ -5,6 +5,7 @@ import ColourWithImage from "./ColourWithImage"
 
 import { anchorImages } from "../__fixtures__/coresAnchor"
 import { dmcImages } from "../__fixtures__/coresDmc"
+import { colourMappingCHildStyle, colourMappingStyle } from "./styles"
 
 const AnchorToDmc = () => {
 
@@ -17,25 +18,24 @@ const AnchorToDmc = () => {
     const mapAnchor = anchorImages()
     const mapDmc = dmcImages()
 
-    return (<div style={{ width: '100%' }} >
+    return (<div style={colourMappingStyle}  >
         {
             sorted.map((entry, index) => {
-
                 return (
-                    <div key={index}>
+                    <div style={colourMappingCHildStyle} key={index}>
                         <ColourWithImage
                             count={index}
                             backgroundColour={anchorColourList.get(entry.anchor) ?? "white"}
                             label="Anchor"
                             colourName={entry.anchor}
-                            file={mapAnchor.get(entry.anchor)} />
+                            file={mapAnchor.get(entry.anchor.toLowerCase())} />
 
                         <ColourWithImage
                             count={index}
-                            backgroundColour={dmcColourList.get(entry.anchor) ?? "white"}
+                            backgroundColour={dmcColourList.get(entry.dmc) ?? "white"}
                             label="DMC"
                             colourName={entry.dmc}
-                            file={mapDmc.get(entry.dmc)} />
+                            file={mapDmc.get(entry.dmc.toLowerCase())} />
 
                     </div>
                 )
