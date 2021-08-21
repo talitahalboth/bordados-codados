@@ -1,5 +1,5 @@
 export const dmcImages = () => {
-    const map = new Map<string, any>()
+    const map = new Map<string, string>()
 
     map.set("1", require("./1.jpg").default)
     map.set("10", require("./10.jpg").default)

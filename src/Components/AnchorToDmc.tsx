@@ -1,16 +1,23 @@
 import { getAnchorAndDmcList } from "../utils/anchorAndDmc"
 import { getAnchorColourList } from "../utils/anchorColour"
 import { getDmcColourList } from "../utils/dmcColour"
-import ColourWithImage from "./ColourWithImage"
 
 import { anchorImages } from "../__fixtures__/coresAnchor"
 import { dmcImages } from "../__fixtures__/coresDmc"
-import { colourMappingCHildStyle, colourMappingStyle } from "./styles"
+import SideBySideList, { ComparisonElements } from "./SideBySideList"
+
 
 const AnchorToDmc = () => {
 
 
     const sorted = getAnchorAndDmcList()
+        .filter((element) => element.dmc !== 'N/A' && element.anchor !== 'N/A')
+        .map((element): ComparisonElements => {
+            return {
+                elementA: element.anchor,
+                elementB: element.dmc
+            }
+        })
     const dmcColourList = getDmcColourList()
     const anchorColourList = getAnchorColourList()
 
@@ -18,31 +25,18 @@ const AnchorToDmc = () => {
     const mapAnchor = anchorImages()
     const mapDmc = dmcImages()
 
-    return (<div style={colourMappingStyle}  >
-        {
-            sorted.map((entry, index) => {
-                return (
-                    <div style={colourMappingCHildStyle} key={index}>
-                        <ColourWithImage
-                            count={index}
-                            backgroundColour={anchorColourList.get(entry.anchor) ?? "white"}
-                            label="Anchor"
-                            colourName={entry.anchor}
-                            file={mapAnchor.get(entry.anchor.toLowerCase())} />
-
-                        <ColourWithImage
-                            count={index}
-                            backgroundColour={dmcColourList.get(entry.dmc) ?? "white"}
-                            label="DMC"
-                            colourName={entry.dmc}
-                            file={mapDmc.get(entry.dmc.toLowerCase())} />
-
-                    </div>
-                )
-
-            })
-        }
-    </div>)
+    return (
+        <SideBySideList
+            sortedElementList={sorted}
+            elementAColourListMap={anchorColourList}
+            elementBColourListMap={dmcColourList}
+            elementAImages={mapAnchor}
+            elementBImages={mapDmc}
+            elementALabel="Anchor"
+            elementBLabel="DMC"
+        />
+    )
 }
+
 
 export default AnchorToDmc
