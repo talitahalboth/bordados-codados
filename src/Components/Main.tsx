@@ -3,11 +3,12 @@
 // import AnchorToDmc from "./AnchorToDmc"
 // import { Box } from "@material-ui/core"
 import ComparisonBoxes from './ComparisonBoxes'
+import Header from './Header'
 
 const Main = () => {
   return (
     <div>
-      <div style={{ height: "60px" }}></div>
+      <Header />
       <ComparisonBoxes />
     </div>
   )

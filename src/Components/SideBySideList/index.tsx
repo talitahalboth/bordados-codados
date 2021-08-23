@@ -1,13 +1,15 @@
 import ColourWithImage from './ColourWithImage'
 import {
+  createStyles,
   makeStyles,
-  Paper,
+  // Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TablePagination,
-  TableRow
+  TableRow,
+  withStyles
 } from '@material-ui/core';
 
 import { useState } from 'react';
@@ -15,6 +17,8 @@ import EnhancedTableHead from './EnhancedTableHead';
 import {
   getComparator, stableSort
 } from './helperFunctions';
+import { ColourList } from '../styles';
+// import { ColourList } from '../styles';
 
 export interface ComparisonElements {
   elementA: string
@@ -39,16 +43,35 @@ export const DEFAULT_MAX_WIDTH = 450
 
 const useStyles = makeStyles({
   root: {
+
     flexShrink: 0,
     maxWidth: DEFAULT_MAX_WIDTH,
   },
   container: {
+    border: "2px",
     maxHeight: 600,
+  },
+  cell: {
+    hover: {
+      "&$hover:hover": {
+        backgroundColor: '#blue !important',
+      },
+    },
+
   },
 })
 
 export type Order = 'asc' | 'desc'
 
+const StyledTableRow = withStyles(() =>
+  createStyles({
+    root: {
+      "&:hover": {
+        backgroundColor: `${ColourList.colorPrimaryLightLight} !important`
+      }
+    },
+  }),
+)(TableRow);
 
 
 const SideBySideList = ({
@@ -86,7 +109,10 @@ const SideBySideList = ({
 
 
   return (
-    <Paper className={classes.root}>
+    <div style={{
+      padding: '10px',
+    }}>
+      {/* <Paper className={classes.root}> */}
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label={`${elementALabel}-${elementBLabel}`}>
           <EnhancedTableHead
@@ -99,7 +125,7 @@ const SideBySideList = ({
           <TableBody>
             {stableSort(sortedElementList, getComparator(order, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((entry, index) => {
               return (
-                <TableRow style={{ width: DEFAULT_MAX_WIDTH }} hover key={index}>
+                <StyledTableRow style={{ width: DEFAULT_MAX_WIDTH }} hover key={index}>
                   <TableCell key={index.toString() + 'A'}>
                     <ColourWithImage
                       count={index}
@@ -122,14 +148,14 @@ const SideBySideList = ({
                       file={elementBImages.get(entry.elementB.toLowerCase())}
                     />
                   </TableCell>
-                </TableRow>
+                </StyledTableRow>
               )
             })}
           </TableBody>
         </Table>
       </TableContainer>
       <TablePagination
-        style={{ maxWidth: DEFAULT_MAX_WIDTH }}
+        style={{ maxWidth: DEFAULT_MAX_WIDTH, backgroundColor: ColourList.colorPrimaryLightLight }}
         rowsPerPageOptions={[10, 50, 100, 500]}
         component="div"
         count={sortedElementList.length}
@@ -138,7 +164,9 @@ const SideBySideList = ({
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-    </Paper>
+      {/* </Paper> */}
+
+    </div>
   )
 }
 

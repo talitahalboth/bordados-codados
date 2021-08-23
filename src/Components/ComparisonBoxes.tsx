@@ -10,7 +10,7 @@ import { Theme } from '@material-ui/core'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      flexGrow: 1,
+      // flexGrow: 1,
     },
     paper: {
       height: 140,
@@ -29,7 +29,7 @@ const ComparisonBoxes = () => {
 
   return (
     <Grid item xs={GRID_XS}>
-      <Grid container justifyContent="center" className={classes.root} spacing={3}>
+      <Grid container justifyContent="center" className={classes.root} xs={12}>
         <Grid item>
           <AnchorToDmc />
         </Grid>
