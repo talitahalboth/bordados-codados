@@ -29,7 +29,7 @@ const ComparisonBoxes = () => {
 
   return (
     <Grid item xs={GRID_XS}>
-      <Grid container justifyContent="center" className={classes.root} xs={12}>
+      <Grid container justifyContent="center" className={classes.root}>
         <Grid item>
           <AnchorToDmc />
         </Grid>

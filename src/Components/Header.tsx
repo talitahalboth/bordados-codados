@@ -5,8 +5,14 @@ const Header = () => {
         <div style={{
             height: '60px',
             backgroundColor: ColourList.colorPrimaryDark,
-            width: '100%'
+            color: "white",
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center'
         }}>
+            <span>{"Something will go here eventually"}</span>
 
         </div >
     )

@@ -1,7 +1,6 @@
-// import { getAverageRGB } from "../../utils/imageColour"
 
+import { FiberManualRecord } from '@material-ui/icons'
 import { threadsToHex } from '../../__fixtures__/threadsToHex'
-import Circle from '../Circle'
 
 interface Props {
   file?: string
@@ -28,30 +27,18 @@ const ColourWithImage = ({
       style={{
         display: 'flex',
         flexDirection: 'row',
-        alignContent: 'space-between',
-        alignItems: 'center',
+        justifyContent: 'space-between',
+        alignItems: 'center'
       }}
     >
-      <div
+      <span style={{ textAlign: 'center' }}>{`${colourName}`}</span>
+
+      <FiberManualRecord
+        fontSize="small"
         style={{
-          display: 'flex',
-          // width: '100px',
-          height: '50px',
-          justifyContent: 'center',
-          alignItems: 'center',
+          color: newBack ?? backgroundColour ?? 'none'
         }}
-      >
-        <span style={{ textAlign: 'center' }}>{`${label} ${colourName}`}</span>
-        <Circle
-          bgColor={newBack ?? backgroundColour ?? 'none'}
-          csx={{
-            height: '10px',
-            width: '10px',
-            padding: '0px',
-            margin: '0px 5px 0px 5px',
-          }}
-        />
-      </div>
+      />
       {file && (
         <img
           id={`${label}-${colourName}`}
