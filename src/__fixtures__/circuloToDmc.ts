@@ -1852,7 +1852,7 @@ export const circuloToDmc = [
         dmc: "122"
     },
     {
-        circulo: "X",
+        circulo: "N/A",
         dmc: "53"
     }
 ]
