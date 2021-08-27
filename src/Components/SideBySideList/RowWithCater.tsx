@@ -15,7 +15,7 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 
 import { useState } from 'react';
-import { ColourList } from '../styles';
+// import { ColourList } from '../styles';
 import { ComparisonElements, DEFAULT_MAX_WIDTH } from '.';
 import React from 'react';
 import ColoursAlike from './ColoursAlike';
@@ -23,19 +23,22 @@ import ColoursAlike from './ColoursAlike';
 const StyledTableRow = withStyles(() =>
     createStyles({
         root: {
-            "&:hover": {
-                backgroundColor: `${ColourList.colorPrimaryLightLight} !important`
-            },
-            '& > *': {
-                borderBottom: 'unset',
-            },
+            // backgroundColor: ColourList.colorPrimaryDark,
+            // color: 'white',
+            // "&:hover": {
+            //     backgroundColor: `${ColourList.colorPrimary} !important`
+            // },
+            // '& > *': {
+            //     borderBottom: 'unset',
+            // },
         },
     }),
 )(TableRow);
 const StyledTableCell = withStyles(() =>
     createStyles({
         root: {
-            padding: '10px'
+            padding: '10px',
+            // backgroundColor: ColourList.colorPrimaryDark
         },
     }),
 )(TableCell);
@@ -74,8 +77,6 @@ const RowWithCaret = ({
             <StyledTableRow style={{ width: DEFAULT_MAX_WIDTH }} hover key={index}>
                 <StyledTableCell>
                     <IconButton aria-label="expand row" size="small" onClick={() => {
-                        // if (!openLeft)
-                        //     setOpenRight(false)
                         setOpenLeft(!openLeft)
                     }
                     }>

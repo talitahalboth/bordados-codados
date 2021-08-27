@@ -2,7 +2,7 @@ import { createStyles, List, ListItem, Tooltip, Typography, withStyles } from "@
 import { FiberManualRecord } from "@material-ui/icons";
 import { colourDistance, hexToRgb } from "../../utils/colourUtils"
 import { threadsToHex } from "../../__fixtures__/threadsToHex"
-import { ColourList } from "../styles";
+// import { ColourList } from "../styles";
 
 interface Props {
     elementLabel: string
@@ -22,9 +22,10 @@ const TextOnlyTooltip = withStyles({
 const StyledListItem = withStyles(() =>
     createStyles({
         root: {
-            "&:hover": {
-                backgroundColor: `${ColourList.colorPrimaryLightLight} !important`
-            },
+            // backgroundColor: ColourList.colorPrimaryDark,
+            // "&:hover": {
+            //     backgroundColor: `${ColourList.colorPrimary} !important`
+            // },
         },
     }),
 )(ListItem);
@@ -62,7 +63,9 @@ const ColoursAlike = ({ elementLabel, colourName, elementImagesList }: Props) =>
 
     return (
         <div>
-            <Typography variant="h6">
+            <Typography style={{
+                // color: ColourList.colorPrimaryLightLight,
+            }} variant="h6">
                 {`${elementLabel} variants`}
             </Typography>
             <List dense>
@@ -89,7 +92,8 @@ const ColoursAlike = ({ elementLabel, colourName, elementImagesList }: Props) =>
                                     <div
                                         style={{
                                             display: "flex",
-                                            alignItems: "center"
+                                            alignItems: "center",
+                                            // color: ColourList.colorPrimaryLightLight,
                                         }}
                                     >
                                         <FiberManualRecord

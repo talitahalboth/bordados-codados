@@ -1,4 +1,3 @@
-// import type { Theme } from '@material-ui/core/styles'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 
@@ -10,7 +9,6 @@ import { Theme } from '@material-ui/core'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      // flexGrow: 1,
     },
     paper: {
       height: 140,

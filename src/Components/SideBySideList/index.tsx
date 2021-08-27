@@ -1,21 +1,11 @@
-// import ColourWithImage from './ColourWithImage'
 import {
-  // createStyles,
-  // IconButton,
   makeStyles,
-  // Paper,
   Table,
   TableBody,
-  // TableCell,
   TableContainer,
   TablePagination,
-  // TableRow,
-  // withStyles
 } from '@material-ui/core';
 
-
-// import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
-// import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 
 import { useState } from 'react';
 import EnhancedTableHead from './EnhancedTableHead';
@@ -66,19 +56,6 @@ const useStyles = makeStyles({
 })
 
 export type Order = 'asc' | 'desc'
-
-// const StyledTableRow = withStyles(() =>
-//   createStyles({
-//     root: {
-//       "&:hover": {
-//         backgroundColor: `${ColourList.colorPrimaryLightLight} !important`
-//       },
-//       '& > *': {
-//         borderBottom: 'unset',
-//       },
-//     },
-//   }),
-// )(TableRow);
 
 
 const SideBySideList = ({
