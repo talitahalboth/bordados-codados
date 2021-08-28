@@ -125,7 +125,7 @@ const SideBySideList = ({
       </TableContainer>
       <TablePagination
         style={{ backgroundColor: ColourList.colorPrimaryLightLight }}
-        rowsPerPageOptions={[10, 50, 100, Math.max(500, sortedElementList.length)]}
+        rowsPerPageOptions={[10, 50, 100, sortedElementList.length]}
         component="div"
         count={sortedElementList.length}
         rowsPerPage={rowsPerPage}
