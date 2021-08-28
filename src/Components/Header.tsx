@@ -2,8 +2,8 @@ import { AppBar, createStyles, Drawer, IconButton, List, ListItem, ListItemIcon,
 import { ColourList } from "./styles"
 import MenuIcon from '@material-ui/icons/Menu'
 import { useState } from "react"
-import { useDispatch } from "react-redux"
-import { navigateToPage } from "./navigationSlice"
+import { useDispatch, useSelector } from "react-redux"
+import { navigateToPage, selectNavigate } from "./navigationSlice"
 import { ANCHOR_TO_CIRCULO, ANCHOR_TO_DMC, CIRCULO_TO_DMC } from "../constants"
 import { CompareArrows } from "@material-ui/icons"
 
@@ -71,6 +71,9 @@ const Header = () => {
         { name: CIRCULO_TO_DMC, label: "Circulo to DMC" }
     ]
 
+    const navigate = useSelector(selectNavigate)
+    const title = navigationOpions.find((option) => option.name === navigate)
+
     return (
         <AppBar position="static">
             <Toolbar variant="dense" className={classes.appBar}>
@@ -78,7 +81,7 @@ const Header = () => {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" className={classes.title}>
-                    {"Something will go here eventually"}
+                    {title?.label ?? "Hello :)"}
                 </Typography>
             </Toolbar>
             <Drawer anchor={"left"} open={drawerOpen} onClose={toggleDrawer(false)}>
