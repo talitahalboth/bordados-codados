@@ -12,6 +12,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import SideBySideList, { ComparisonElements } from "./SideBySideList";
 import { VariableSizeList, ListChildComponentProps } from 'react-window';
+import { threadsToHex } from '../__fixtures__/threadsToHex';
 
 
 const LISTBOX_PADDING = 8; // px
@@ -178,19 +179,33 @@ const ColourListWithSearch = ({
     const options: LabelAndColour[] = []
 
     elementASearchList.forEach((elementAObj) => {
+
+        const newColourA = threadsToHex.find(
+            (element) =>
+                element.colourName ===
+                `${elementALabel.toLowerCase()}-${elementAObj.toLowerCase()}`
+        )?.hexCode
         options.push({
             label: `${elementALabel} ${elementAObj}`,
-            colour: elementAColourListMap.get(elementAObj) ?? 'none',
+            colour: newColourA ?? elementAColourListMap.get(elementAObj) ?? 'none',
             elementA: elementAObj
         })
     })
     elementBSearchList.forEach((elementBObj) => {
+
+        const newColourB = threadsToHex.find(
+            (element) =>
+                element.colourName ===
+                `${elementBLabel.toLowerCase()}-${elementBObj.toLowerCase()}`
+        )?.hexCode
         options.push({
             label: `${elementBLabel} ${elementBObj}`,
-            colour: elementBColourListMap.get(elementBObj) ?? 'none',
+            colour: newColourB ?? elementBColourListMap.get(elementBObj) ?? 'none',
             elementB: elementBObj
         })
     })
+
+
 
 
     return (

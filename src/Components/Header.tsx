@@ -2,11 +2,10 @@ import { AppBar, createStyles, Drawer, IconButton, List, ListItem, ListItemIcon,
 import { ColourList } from "./styles"
 import MenuIcon from '@material-ui/icons/Menu'
 import { useState } from "react"
-import InboxIcon from '@material-ui/icons/MoveToInbox'
-import MailIcon from '@material-ui/icons/Mail'
 import { useDispatch } from "react-redux"
 import { navigateToPage } from "./navigationSlice"
 import { ANCHOR_TO_CIRCULO, ANCHOR_TO_DMC, CIRCULO_TO_DMC } from "../constants"
+import { CompareArrows } from "@material-ui/icons"
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -91,11 +90,11 @@ const Header = () => {
                 >
 
                     <List>
-                        {navigationOpions.map((option, index) => (
+                        {navigationOpions.map((option) => (
                             <StyledListItem button onClick={() =>
                                 dispatch(navigateToPage(option.name))
                             } key={option.name}>
-                                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                                <ListItemIcon><CompareArrows /></ListItemIcon>
                                 <ListItemText primary={option.label} />
                             </StyledListItem>
                         ))}

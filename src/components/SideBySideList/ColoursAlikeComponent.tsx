@@ -6,6 +6,7 @@ import { getActualColourCode, NameAndCode } from "./ColoursAlike"
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import { useState } from "react"
+import { threadsToHex } from "../../__fixtures__/threadsToHex"
 
 interface Props {
     index: number,
@@ -95,9 +96,23 @@ const ColoursAlikeComponent = ({
             <Collapse in={open} timeout="auto" unmountOnExit>
                 <div style={{ display: 'flex', flexDirection: 'column', paddingLeft: '40px' }}>
                     {counterParts && counterParts.map((colour, index) => {
+
+                        const newColour = threadsToHex.find(
+                            (element) =>
+                                element.colourName ===
+                                `${counterpartLabel.toLowerCase()}-${colour.toLowerCase()}`
+                        )?.hexCode
                         return (
                             <div>
                                 <StyledListItem button key={index}>
+                                    {(newColour || colour) &&
+                                        <FiberManualRecord
+                                            fontSize="small"
+                                            style={{
+                                                color: newColour ?? colour ?? 'none'
+                                            }}
+                                        />
+                                    }
                                     <span>{counterpartLabel} {colour}</span>
                                 </StyledListItem>
                             </div>
