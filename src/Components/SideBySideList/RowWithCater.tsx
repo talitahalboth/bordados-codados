@@ -19,18 +19,19 @@ import { useState } from 'react';
 import { ComparisonElements, DEFAULT_MAX_WIDTH } from '.';
 import React from 'react';
 import ColoursAlike from './ColoursAlike';
+import { ColourList } from '../styles';
 
 const StyledTableRow = withStyles(() =>
     createStyles({
         root: {
             // backgroundColor: ColourList.colorPrimaryDark,
             // color: 'white',
-            // "&:hover": {
-            //     backgroundColor: `${ColourList.colorPrimary} !important`
-            // },
-            // '& > *': {
-            //     borderBottom: 'unset',
-            // },
+            "&:hover": {
+                backgroundColor: `${ColourList.colorPrimaryLightLight} !important`
+            },
+            '& > *': {
+                borderBottom: 'unset',
+            },
         },
     }),
 )(TableRow);

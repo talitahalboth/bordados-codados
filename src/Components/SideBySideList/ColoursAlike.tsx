@@ -2,6 +2,7 @@ import { createStyles, List, ListItem, Tooltip, Typography, withStyles } from "@
 import { FiberManualRecord } from "@material-ui/icons";
 import { colourDistance, hexToRgb } from "../../utils/colourUtils"
 import { threadsToHex } from "../../__fixtures__/threadsToHex"
+import { ColourList } from "../styles";
 // import { ColourList } from "../styles";
 
 interface Props {
@@ -23,9 +24,9 @@ const StyledListItem = withStyles(() =>
     createStyles({
         root: {
             // backgroundColor: ColourList.colorPrimaryDark,
-            // "&:hover": {
-            //     backgroundColor: `${ColourList.colorPrimary} !important`
-            // },
+            "&:hover": {
+                backgroundColor: `${ColourList.colorPrimaryLightLight} !important`
+            },
         },
     }),
 )(ListItem);

@@ -43,12 +43,12 @@ const useStyles = makeStyles({
   },
   container: {
     border: "2px",
-    maxHeight: 600,
+    // maxHeight: 600,
   },
   cell: {
     hover: {
       "&$hover:hover": {
-        backgroundColor: '#blue !important',
+        backgroundColor: 'blue !important',
       },
     },
 
@@ -125,7 +125,7 @@ const SideBySideList = ({
       </TableContainer>
       <TablePagination
         style={{ backgroundColor: ColourList.colorPrimaryLightLight }}
-        rowsPerPageOptions={[10, 50, 100, 500]}
+        rowsPerPageOptions={[10, 50, 100, Math.max(500, sortedElementList.length)]}
         component="div"
         count={sortedElementList.length}
         rowsPerPage={rowsPerPage}
