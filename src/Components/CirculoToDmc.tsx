@@ -3,7 +3,8 @@ import { getDmcColourList } from '../utils/dmcColour'
 import { circuloImages } from '../__fixtures__/coresCirculo'
 import { dmcImages } from '../__fixtures__/coresDmc'
 import type { ComparisonElements } from './SideBySideList'
-import SideBySideList from './SideBySideList'
+import ColoursListWithSearch from './ColoursListWithSearch'
+
 
 const CirculoToDmc = () => {
   const sorted = getCirculoAndDMcList()
@@ -20,8 +21,9 @@ const CirculoToDmc = () => {
   const mapDmc = dmcImages()
   const mapCirculo = circuloImages()
 
+
   return (
-    <SideBySideList
+    <ColoursListWithSearch
       sortedElementList={sorted}
       elementAColourListMap={dmcColourList}
       elementBColourListMap={new Map<string, string>()}

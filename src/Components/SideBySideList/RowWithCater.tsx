@@ -19,18 +19,19 @@ import { useState } from 'react';
 import { ComparisonElements, DEFAULT_MAX_WIDTH } from '.';
 import React from 'react';
 import ColoursAlike from './ColoursAlike';
+import { ColourList } from '../styles';
 
 const StyledTableRow = withStyles(() =>
     createStyles({
         root: {
             // backgroundColor: ColourList.colorPrimaryDark,
             // color: 'white',
-            // "&:hover": {
-            //     backgroundColor: `${ColourList.colorPrimary} !important`
-            // },
-            // '& > *': {
-            //     borderBottom: 'unset',
-            // },
+            "&:hover": {
+                backgroundColor: `${ColourList.colorPrimaryLightLight} !important`
+            },
+            '& > *': {
+                borderBottom: 'unset',
+            },
         },
     }),
 )(TableRow);
@@ -56,6 +57,9 @@ interface Props {
 
     elementAImages: Map<string, string>
     elementBImages: Map<string, string>
+
+    elementAToBMap: Map<string, string[]>
+    elementBToAMap: Map<string, string[]>
 }
 
 const RowWithCaret = ({
@@ -67,6 +71,8 @@ const RowWithCaret = ({
     elementBColourListMap,
     elementBLabel,
     elementBImages,
+    elementAToBMap,
+    elementBToAMap
 }: Props) => {
 
     const [openLeft, setOpenLeft] = useState(false)
@@ -121,7 +127,9 @@ const RowWithCaret = ({
                             elementImagesList={elementAImages}
                             open={openLeft}
                             elementLabel={elementALabel}
+                            counterpartLabel={elementBLabel}
                             colourName={entry.elementA}
+                            elementAToBMap={elementAToBMap}
                         />
                     </Collapse>
                     {openLeft && openRight && (<Divider />)}
@@ -131,7 +139,9 @@ const RowWithCaret = ({
                             elementImagesList={elementBImages}
                             open={openRight}
                             elementLabel={elementBLabel}
+                            counterpartLabel={elementALabel}
                             colourName={entry.elementB}
+                            elementAToBMap={elementBToAMap}
                         />
 
                     </Collapse>

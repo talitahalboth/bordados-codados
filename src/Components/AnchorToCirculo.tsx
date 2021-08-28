@@ -3,7 +3,7 @@ import { getAnchorColourList } from '../utils/anchorColour'
 import { anchorImages } from '../__fixtures__/coresAnchor'
 import { circuloImages } from '../__fixtures__/coresCirculo'
 import type { ComparisonElements } from './SideBySideList'
-import SideBySideList from './SideBySideList'
+import ColoursListWithSearch from './ColoursListWithSearch'
 
 const AnchorToCirculo = () => {
   const sorted = getAnchorAndCirculoList()
@@ -21,7 +21,7 @@ const AnchorToCirculo = () => {
   const mapCirculo = circuloImages()
 
   return (
-    <SideBySideList
+    <ColoursListWithSearch
       sortedElementList={sorted}
       elementAColourListMap={anchorColourList}
       elementBColourListMap={new Map<string, string>()}

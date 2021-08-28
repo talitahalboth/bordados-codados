@@ -30,6 +30,10 @@ interface Props {
 
   elementAImages: Map<string, string>
   elementBImages: Map<string, string>
+
+
+  elementAToBMap: Map<string, string[]>
+  elementBToAMap: Map<string, string[]>
 }
 
 export const DEFAULT_MAX_WIDTH = 500
@@ -43,12 +47,12 @@ const useStyles = makeStyles({
   },
   container: {
     border: "2px",
-    maxHeight: 600,
+    // maxHeight: 600,
   },
   cell: {
     hover: {
       "&$hover:hover": {
-        backgroundColor: '#blue !important',
+        backgroundColor: 'blue !important',
       },
     },
 
@@ -66,6 +70,8 @@ const SideBySideList = ({
   elementBColourListMap,
   elementAImages,
   elementBImages,
+  elementAToBMap,
+  elementBToAMap
 }: Props) => {
 
   const classes = useStyles()
@@ -108,6 +114,8 @@ const SideBySideList = ({
             {stableSort(sortedElementList, getComparator(order, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((entry, index) => {
               return (
                 <RowWithCaret
+                  elementAToBMap={elementAToBMap}
+                  elementBToAMap={elementBToAMap}
                   key={index}
                   entry={entry}
                   index={index}
@@ -125,7 +133,7 @@ const SideBySideList = ({
       </TableContainer>
       <TablePagination
         style={{ backgroundColor: ColourList.colorPrimaryLightLight }}
-        rowsPerPageOptions={[10, 50, 100, 500]}
+        rowsPerPageOptions={[10, 50, 100, sortedElementList.length]}
         component="div"
         count={sortedElementList.length}
         rowsPerPage={rowsPerPage}
