@@ -57,6 +57,9 @@ interface Props {
 
     elementAImages: Map<string, string>
     elementBImages: Map<string, string>
+
+    elementAToBMap: Map<string, string[]>
+    elementBToAMap: Map<string, string[]>
 }
 
 const RowWithCaret = ({
@@ -68,6 +71,8 @@ const RowWithCaret = ({
     elementBColourListMap,
     elementBLabel,
     elementBImages,
+    elementAToBMap,
+    elementBToAMap
 }: Props) => {
 
     const [openLeft, setOpenLeft] = useState(false)
@@ -122,7 +127,9 @@ const RowWithCaret = ({
                             elementImagesList={elementAImages}
                             open={openLeft}
                             elementLabel={elementALabel}
+                            counterpartLabel={elementBLabel}
                             colourName={entry.elementA}
+                            elementAToBMap={elementAToBMap}
                         />
                     </Collapse>
                     {openLeft && openRight && (<Divider />)}
@@ -132,7 +139,9 @@ const RowWithCaret = ({
                             elementImagesList={elementBImages}
                             open={openRight}
                             elementLabel={elementBLabel}
+                            counterpartLabel={elementALabel}
                             colourName={entry.elementB}
+                            elementAToBMap={elementBToAMap}
                         />
 
                     </Collapse>

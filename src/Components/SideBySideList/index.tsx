@@ -30,6 +30,10 @@ interface Props {
 
   elementAImages: Map<string, string>
   elementBImages: Map<string, string>
+
+
+  elementAToBMap: Map<string, string[]>
+  elementBToAMap: Map<string, string[]>
 }
 
 export const DEFAULT_MAX_WIDTH = 500
@@ -66,6 +70,8 @@ const SideBySideList = ({
   elementBColourListMap,
   elementAImages,
   elementBImages,
+  elementAToBMap,
+  elementBToAMap
 }: Props) => {
 
   const classes = useStyles()
@@ -108,6 +114,8 @@ const SideBySideList = ({
             {stableSort(sortedElementList, getComparator(order, orderBy)).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((entry, index) => {
               return (
                 <RowWithCaret
+                  elementAToBMap={elementAToBMap}
+                  elementBToAMap={elementBToAMap}
                   key={index}
                   entry={entry}
                   index={index}

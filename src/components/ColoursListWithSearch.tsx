@@ -152,11 +152,28 @@ const ColourListWithSearch = ({
     const elementASearchList = new Set<string>()
     const elementBSearchList = new Set<string>()
 
+    const elementAToBMap = new Map<string, string[]>()
+    const elementBToAMap = new Map<string, string[]>()
 
     sortedElementList.forEach((element) => {
         elementASearchList.add(element.elementA)
         elementBSearchList.add(element.elementB)
+        const listA = elementAToBMap.get(element.elementA)
+        if (!listA)
+            elementAToBMap.set(element.elementA, [element.elementB])
+        else {
+            elementAToBMap.set(element.elementA, [...listA, element.elementB])
+        }
+
+        const listB = elementBToAMap.get(element.elementB)
+        if (!listB)
+            elementBToAMap.set(element.elementB, [element.elementA])
+        else {
+            elementBToAMap.set(element.elementB, [...listB, element.elementA])
+        }
+
     })
+
 
     const options: LabelAndColour[] = []
 
@@ -216,6 +233,8 @@ const ColourListWithSearch = ({
             </div>
 
             <SideBySideList
+                elementAToBMap={elementAToBMap}
+                elementBToAMap={elementBToAMap}
                 sortedElementList={filteredColoursList}
                 elementAColourListMap={elementAColourListMap}
                 elementBColourListMap={elementBColourListMap}
