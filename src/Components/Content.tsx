@@ -1,4 +1,4 @@
-import { Container, createStyles, makeStyles, TextField, Theme } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import { useSelector } from 'react-redux'
 import { ANCHOR_TO_CIRCULO, ANCHOR_TO_DMC, CIRCULO_TO_DMC } from '../constants';
 import AnchorToCirculo from './AnchorToCirculo';
@@ -26,39 +26,11 @@ const ContentSwitch = ({ navigate }: ContentSwitchProps) => {
 
 }
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignSelf: 'center',
-        },
-        margin: {
-            width: '100%',
-        },
-        withoutLabel: {
-            marginTop: theme.spacing(3),
-        },
-        textField: {
-        },
-    }),
-);
-
 const Content = () => {
 
-    const navigate = useSelector(selectNavigate);
-    const classes = useStyles()
+    const navigate = useSelector(selectNavigate)
     return (
         <Container maxWidth={"sm"} style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ padding: '10px' }}>
-
-                <TextField
-                    variant="outlined"
-                    label="Find a Colour"
-                    id="standard-start-adornment"
-                    className={classes.margin}
-                />
-            </div>
             <ContentSwitch navigate={navigate} />
         </Container>
     )
